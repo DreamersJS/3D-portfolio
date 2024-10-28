@@ -2,6 +2,7 @@
 import { Environment } from '@react-three/drei';
 import { Canvas } from '@react-three/fiber';
 import React, { Suspense, useEffect, useState } from 'react';
+import {  Html } from '@react-three/drei';
 
 const RenderModel = ({ children, className }) => {
     const [clsx, setClsx] = useState(null);
@@ -15,7 +16,7 @@ const RenderModel = ({ children, className }) => {
 
     return (
         <Canvas className={clsx('w-screen h-screen -z-10 relative', className)}>
-            <Suspense fallback={<div>Loading...</div>}>
+            <Suspense fallback={<Html center><div>Loading...</div></Html>}>
                 {children}
             </Suspense>
             {/* <ambientLight intensity={0.5} /> */}
