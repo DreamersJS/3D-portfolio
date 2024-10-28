@@ -3,7 +3,7 @@ import Image from "next/image";
 import bg from "../../public/background/home-background.png";
 import RenderModel from '@/app/components/RenderModel'
 import Wizard from "./components/models/Wizard";
-import Nav from "./components/nav/index";
+import Nav from "./components/nav/NavCircle";
 
 export default function Home() {
   return (
