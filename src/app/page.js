@@ -8,7 +8,7 @@ import Nav from "./components/nav/NavCircle";
 export default function Home() {
   return (
     <main className="flex min-h-screen flex-col items-center justify-between relative">
-      <Image src={bg} alt="background-image" className="w-full h-full object-cover object-center opacity-25" layout="fill" />
+      <Image src={bg} alt="background-image" className="w-full h-full object-cover object-center opacity-15" layout="fill" />
 
           <Nav />
       <div className="w-full h-screen">
