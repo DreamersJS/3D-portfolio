@@ -17,7 +17,7 @@ const Nav = () => {
                         const x = `calc(${radius} * ${Math.cos(angleRadiant)})`;
                         const y = `calc(${radius} * ${Math.sin(angleRadiant)})`;
 
-                        return <NavButton key={btn.label} x={x} y={y} label={btn.label} link={btn.link} icon={btn.icon} newTab={btn.newTab} />
+                        return <NavButton key={btn.label} x={x} y={y} {...btn} />
                     })
                 }
             </div>
