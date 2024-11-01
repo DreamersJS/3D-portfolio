@@ -4,7 +4,7 @@ const ProjectList = ({ projects }) => {
     return (
         <div className="flex flex-col items-center justify-between">
             <h1 className="text-4xl font-bold">Projects</h1>
-            <div>
+            <div className="w-full max-w-4kl px-16 space-y-8 flex flex-col items-center">
                 {projects.map((project) => (
                     <ProjectLayout key={project.id} {...project} />
                 ))}
