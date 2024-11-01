@@ -19,7 +19,7 @@ const Staff = React.memo(function Staff(props) {
       {...props}
       dispose={null}
       scale={[3, 3, 3]}
-      position={[-1, -2, 0]}// for my screen -1, -2, 0
+      position={[0, -2, 0]}
       ref={modelRef}
     >
       <mesh
