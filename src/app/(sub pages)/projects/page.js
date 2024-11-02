@@ -7,7 +7,7 @@ import RenderModel from "@/app/components/RenderModel";
 import Staff from "@/app/components/models/Staff";
 
 export default function Home() {
-  // main className="flex min-h-screen flex-col items-center justify-between relative"
+
   return (
     <main >
       <Image src={bg} alt="background-image" className="-z-50 fixed top-0 left-0 w-full h-full object-cover object-center opacity-25" />
