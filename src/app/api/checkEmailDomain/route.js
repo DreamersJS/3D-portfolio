@@ -1,4 +1,4 @@
-import { checkDomainMxRecords } from '@/service/service.emailDomain';
+import { checkDomainMxRecords } from '@/../service/service.emailDomain';
 
 export async function GET(req) {
     const { searchParams } = new URL(req.url);
