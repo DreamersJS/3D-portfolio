@@ -1,5 +1,3 @@
-// lib/service.email.js
-
 import dns from 'dns';
 
 // List of known email providers (add more as needed)
