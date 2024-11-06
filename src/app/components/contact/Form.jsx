@@ -20,39 +20,6 @@ export default function Form() {
         }
     };
 
-    // Send confirmation email
-    const handleSendConfirmationEmail = async (email) => {
-        try {
-            const response = await fetch('/api/sendConfirmationEmail', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({ email }),
-            });
-            if (!response.ok) throw new Error('Failed to send confirmation email');
-            toast.success('Confirmation email sent!', {
-                duration: 5000,
-                icon: <MailCheck />,
-                style: {
-                    backgroundColor: '#1B1B1B',
-                    border: 'none',
-                },
-            });
-            return true;
-        } catch (error) {
-            toast.error('Failed to send confirmation email.', {
-                duration: 5000,
-                icon: <MailX />,
-                style: {
-                    backgroundColor: '#1B1B1B',
-                    border: 'none',
-                },
-            });
-            return false;
-        }
-    };
-
     const onSubmit = async (data) => {
         const isDomainValid = await handleEmailDomainCheck(data.email);
         if (!isDomainValid) {
@@ -66,8 +33,6 @@ export default function Form() {
             });
             return; 
         }
-
-        await handleSendConfirmationEmail(data.email);
 
         const templateParams = {
             to: 'Zvezda Neycheva',
@@ -94,7 +59,7 @@ export default function Form() {
                     border: 'none',
                 },
             });
-            reset(); // Reset form after successful submission
+            reset(); 
         } catch (error) {
             toast.error('Message failed to send!', {
                 id: toastId,
