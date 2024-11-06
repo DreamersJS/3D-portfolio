@@ -7,23 +7,29 @@ import { rateLimiter } from '@/app/../../service/rateLimiter';
 export async function POST(req) {
     const ip = req.headers.get('x-forwarded-for') || req.socket.remoteAddress || req.ip;
 
-    if (!rateLimiter(ip)) {
-        return NextResponse.json({ message: 'Too many requests, please try again later.' }, { status: 429 });
-    }
+    // if (!rateLimiter(ip)) {
+    //     return NextResponse.json({ message: 'Too many requests, please try again later.' }, { status: 429 });
+    // }
 
     await connectRedis();
     const { email } = await req.json();
 
     const token = generateToken();
     const hashedToken = await hashToken(token);
-    
+
     // Set expiration time (e.g., 1 hour from now)
     const expiresAt = Date.now() + 3600 * 1000;
 
     // Store token in Redis
-    await redisClient.setEx(`confirm_tokens:${hashedToken}`, 3600, JSON.stringify({ email, expiresAt }));
+    try {
+        await redisClient.setEx(`confirm_tokens:${hashedToken}`, 3600, JSON.stringify({ email, expiresAt }));
+        const storedToken = await redisClient.get(`confirm_tokens:${hashedToken}`);
+        console.log('Token stored in Redis:', storedToken); // Log to verify storage
+    } catch (redisError) {
+        console.error('Error saving token in Redis:', redisError);
+        return NextResponse.json({ message: 'Error saving confirmation token to Redis.' }, { status: 500 });
+    }
 
-    console.log('Stored in Redis:', await redisClient.get(`confirm_tokens:${hashedToken}`));
     // Generate the confirmation link with the plain token
     const confirmationLink = `${process.env.NEXT_PUBLIC_APP_URL}/api/confirmEmail?token=${token}&email=${email}`;
     console.log(`Confirmation link: ${confirmationLink}`);
@@ -35,9 +41,9 @@ export async function POST(req) {
             reply_to: email,
             message: `Please confirm your email by clicking the link: ${confirmationLink}`,
         };
-        console.log({templateParams});
+
         await sendEmail(templateParams);
-        
+
         return NextResponse.json({ message: 'Confirmation email sent!' }, { status: 200 });
     } catch (error) {
         console.error('Failed to send email:', error);

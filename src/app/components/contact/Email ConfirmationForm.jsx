@@ -53,18 +53,18 @@ export default function EmailConfirmationForm() {
     };
 
     const onSubmit = async (data) => {
-        const isDomainValid = await handleEmailDomainCheck(data.email);
-        if (!isDomainValid) {
-            toast.error('Invalid domain or no MX records found!', {
-                duration: 5000,
-                icon: <MailX />,
-                style: {
-                    backgroundColor: '#1B1B1B',
-                    border: 'none',
-                },
-            });
-            return;
-        }
+        // const isDomainValid = await handleEmailDomainCheck(data.email);
+        // if (!isDomainValid) {
+        //     toast.error('Invalid domain or no MX records found!', {
+        //         duration: 5000,
+        //         icon: <MailX />,
+        //         style: {
+        //             backgroundColor: '#1B1B1B',
+        //             border: 'none',
+        //         },
+        //     });
+        //     return;
+        // }
         try {
             await handleSendConfirmationEmail(data.email);
 
