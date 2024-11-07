@@ -5,6 +5,8 @@ import { generateToken, hashToken } from '@/app/../../service/tokenService';
 import { rateLimiter } from '@/app/../../service/rateLimiter';
 
 export async function POST(req) {
+    const { searchParams } = new URL(req.url);
+    const email = searchParams.get('email');
     const ip = req.headers.get('x-forwarded-for') || req.socket.remoteAddress || req.ip;
 
     // if (!rateLimiter(ip)) {
@@ -12,7 +14,7 @@ export async function POST(req) {
     // }
 
     await connectRedis();
-    const { email } = await req.json();
+    // const { email } = await req.json();
 
     const token = generateToken();
     const hashedToken = await hashToken(token);

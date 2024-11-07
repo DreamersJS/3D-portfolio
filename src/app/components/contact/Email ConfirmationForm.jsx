@@ -22,7 +22,7 @@ export default function EmailConfirmationForm() {
     // Send confirmation email
     const handleSendConfirmationEmail = async (email) => {
         try {
-            const response = await fetch('/api/sendConfirmationEmail', {
+            const response = await fetch(`/api/sendConfirmationEmail?email=${email}`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
