@@ -3,6 +3,7 @@ import { sendEmail } from '@/app/../../service/service.email';
 import redisClient, { connectRedis } from '@/app/../../service/redisClient';
 import { generateToken, hashToken } from '@/app/../../service/tokenService';
 import { rateLimiter } from '@/app/../../service/rateLimiter';
+import {sendEmail2, sendEmail3, sendEmail4 } from '@/app/../../service/serverEmail';
 
 export async function POST(req) {
     const { searchParams } = new URL(req.url);
@@ -38,13 +39,13 @@ export async function POST(req) {
     try {
         // Send the confirmation email
         const templateParams = {
-            to: email,
+            to_name: email,
             from_name: 'Email Confirmation',
             reply_to: email,
             message: `Please confirm your email by clicking the link: ${confirmationLink}`,
         };
 
-        await sendEmail(templateParams);
+        await sendEmail4(templateParams);
 
         return NextResponse.json({ message: 'Confirmation email sent!' }, { status: 200 });
     } catch (error) {

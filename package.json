@@ -11,10 +11,12 @@
   },
   "dependencies": {
     "@emailjs/browser": "^4.4.1",
+    "@emailjs/nodejs": "^5.0.2",
     "@react-three/drei": "^9.114.3",
     "@react-three/fiber": "^8.17.9",
     "bcrypt": "^5.1.1",
     "clsx": "^2.1.1",
+    "dotenv": "^16.4.5",
     "framer-motion": "^11.11.1",
     "lucide-react": "^0.449.0",
     "next": "14.2.14",
