@@ -71,7 +71,8 @@ const NavButton = ({ x, y, label, link, icon, newTab, labelDirection="right" }) 
                     
                     {/* Tooltip text */}
                     <span
-                        className={clsx("absolute hidden peer-hover:block px-2 py-1 left-full mx-2 top-1/2 -translate-y-1/2 bg-background text-foreground text-sm rounded-md shadow-lg whitespace-nowrap z-50", labelDirection==="left"?"right-full left-auto": " ")}>
+                        className={`absolute hidden peer-hover:block px-2 py-1 mx-2 top-1/2 -translate-y-1/2 bg-background text-foreground text-sm rounded-md shadow-lg whitespace-nowrap z-50", ${labelDirection==="left" ? "right-full left-auto" : "left-full " }`}>
+                        {/* <div className={`w-full overflow-hidden transition-all duration-150 user-chat dark:bg-zinc-800 ${mainContent && !sideBarContent ? 'bg-slate-50' : ''}`}></div> */} 
                         {label}
                     </span>
                 </span>
