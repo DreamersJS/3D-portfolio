@@ -1,6 +1,8 @@
 import Link from "next/link";
 import React from "react";
 import { BookOpenText, GithubIcon, Home, Linkedin, Palette, Phone, User } from "lucide-react";
+import ResponsiveComponent from "../ResponsiveComponent";
+import clsx from "clsx";
 
 const getIcon = (icon) => {
     switch (icon) {
@@ -23,18 +25,45 @@ const getIcon = (icon) => {
     }
 }
 
-const NavButton = ({ x, y, label, link, icon, newTab }) => {
+const NavButton = ({ x, y, label, link, icon, newTab, labelDirection="right" }) => {
     return (
-        <div className="absolute cursor-pointer z-50"
-            style={{ transform: `translate(${x},${y})` }}>
+        <ResponsiveComponent>
+            {({ size }) => {
+                return size && size >= 480 ?
+                <div className="absolute cursor-pointer z-50"
+                style={{ transform: `translate(${x},${y})` }}>
+                <Link
+                    href={link}
+                    target={newTab ? "_blank" : "_self"}
+                    className='text-foreground rounded-full flex items-center custom-bg'
+                    aria-label={label}
+                    name={label}>
+                    
+                    <span className='relative w-14 h-14 p-4 animate-spin-slow-reverse group-hover:pause hover:text-accent'>
+                        {getIcon(icon)}
+                        
+                        {/* Tooltip container */}
+                        <span className="peer bg-transparent absolute top-0 left-0 w-full h-full"></span>
+                        
+                        {/* Tooltip text */}
+                        <span
+                            className='absolute hidden peer-hover:block px-2 py-1 left-full mx-2 top-1/2 -translate-y-1/2 bg-background text-foreground text-sm rounded-md shadow-lg whitespace-nowrap z-50'>
+                            {label}
+                        </span>
+                    </span>
+                </Link>
+            </div>
+            :
+            // Mobile Version:
+            <div className=" w-fit  absolute cursor-pointer z-50">
             <Link
                 href={link}
                 target={newTab ? "_blank" : "_self"}
-                className='text-foreground rounded-full flex items-center bg-background/20 border border-accent/30 border-solid backdrop-blur-[6px] shadow-glass-inset hover:shadow-glass-sm'
+                className='text-foreground  rounded-full flex items-center custom-bg'
                 aria-label={label}
                 name={label}>
                 
-                <span className='relative w-14 h-14 p-4 animate-spin-slow-reverse group-hover:pause hover:text-accent'>
+                <span className='relative  w-10 h-10 p-2.5 xs:w-14 xs:h-14 xs:p-4  hover:text-accent'>
                     {getIcon(icon)}
                     
                     {/* Tooltip container */}
@@ -42,12 +71,15 @@ const NavButton = ({ x, y, label, link, icon, newTab }) => {
                     
                     {/* Tooltip text */}
                     <span
-                        className='absolute hidden peer-hover:block px-2 py-1 left-full mx-2 top-1/2 -translate-y-1/2 bg-background text-foreground text-sm rounded-md shadow-lg whitespace-nowrap z-50'>
+                        className={clsx("absolute hidden peer-hover:block px-2 py-1 left-full mx-2 top-1/2 -translate-y-1/2 bg-background text-foreground text-sm rounded-md shadow-lg whitespace-nowrap z-50", labelDirection==="left"?"right-full left-auto": " ")}>
                         {label}
                     </span>
                 </span>
             </Link>
         </div>
+            }}
+       
+        </ResponsiveComponent>
     )
 }
 

@@ -13,7 +13,7 @@ export default function Home() {
           <Nav />
       <div className="w-full h-screen">
         <RenderModel>
-          <Wizard />
+          {/* <Wizard /> */}
         </RenderModel>
       </div>
 
