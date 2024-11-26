@@ -28,60 +28,57 @@ const getIcon = (icon) => {
 const NavButton = ({ x, y, label, link, icon, newTab, labelDirection="right" }) => {
     return (
         <ResponsiveComponent>
-            {({ size }) => {
-                return size && size >= 480 ?
-                <div className="absolute cursor-pointer z-50"
-                style={{ transform: `translate(${x},${y})` }}>
-                <Link
-                    href={link}
-                    target={newTab ? "_blank" : "_self"}
-                    className='text-foreground rounded-full flex items-center custom-bg'
-                    aria-label={label}
-                    name={label}>
-                    
-                    <span className='relative w-14 h-14 p-4 animate-spin-slow-reverse group-hover:pause hover:text-accent'>
-                        {getIcon(icon)}
-                        
-                        {/* Tooltip container */}
-                        <span className="peer bg-transparent absolute top-0 left-0 w-full h-full"></span>
-                        
-                        {/* Tooltip text */}
-                        <span
-                            className='absolute hidden peer-hover:block px-2 py-1 left-full mx-2 top-1/2 -translate-y-1/2 bg-background text-foreground text-sm rounded-md shadow-lg whitespace-nowrap z-50'>
-                            {label}
-                        </span>
-                    </span>
-                </Link>
-            </div>
-            :
-            // Mobile Version:
-            <div className=" w-fit  absolute cursor-pointer z-50">
-            <Link
-                href={link}
-                target={newTab ? "_blank" : "_self"}
-                className='text-foreground  rounded-full flex items-center custom-bg'
-                aria-label={label}
-                name={label}>
-                
-                <span className='relative  w-10 h-10 p-2.5 xs:w-14 xs:h-14 xs:p-4  hover:text-accent'>
-                    {getIcon(icon)}
-                    
-                    {/* Tooltip container */}
-                    <span className="peer bg-transparent absolute top-0 left-0 w-full h-full"></span>
-                    
-                    {/* Tooltip text */}
-                    <span
-                        className={`absolute hidden peer-hover:block px-2 py-1 mx-2 top-1/2 -translate-y-1/2 bg-background text-foreground text-sm rounded-md shadow-lg whitespace-nowrap z-50", ${labelDirection==="left" ? "right-full left-auto" : "left-full " }`}>
-                        {/* <div className={`w-full overflow-hidden transition-all duration-150 user-chat dark:bg-zinc-800 ${mainContent && !sideBarContent ? 'bg-slate-50' : ''}`}></div> */} 
-                        {label}
-                    </span>
-                </span>
-            </Link>
-        </div>
+            {({ width, height }) => {
+                if (width && width >= 480 && height > 480) {
+                    // Desktop Layout
+                    return (
+                        <div className="absolute cursor-pointer z-50" style={{ transform: `translate(${x},${y})` }}>
+                            <Link href={link} target={newTab ? "_blank" : "_self"} className='text-foreground rounded-full flex items-center custom-bg' aria-label={label} name={label}>
+                                <span className='relative w-14 h-14 p-4 animate-spin-slow-reverse group-hover:pause hover:text-accent'>
+                                    {getIcon(icon)}
+                                    <span className="peer bg-transparent absolute top-0 left-0 w-full h-full"></span>
+                                    <span className='absolute hidden peer-hover:block px-2 py-1 left-full mx-2 top-1/2 -translate-y-1/2 bg-background text-foreground text-sm rounded-md shadow-lg whitespace-nowrap z-50'>
+                                        {label}
+                                    </span>
+                                </span>
+                            </Link>
+                        </div>
+                    );
+                } else if (width >= 480 && width > height) {
+                    // Mobile Landscape Layout
+                    return (
+                        <div className="w-fit absolute cursor-pointer z-50 space-x-2">
+                            <Link href={link} target={newTab ? "_blank" : "_self"} className='text-foreground rounded-full flex items-center custom-bg' aria-label={label} name={label}>
+                                <span className='relative w-10 h-10 p-2.5 xs:w-14 xs:h-14 xs:p-4 hover:text-accent'>
+                                    {getIcon(icon)}
+                                    <span className="peer bg-transparent absolute top-0 left-0 w-full h-full"></span>
+                                    <span className={`absolute hidden peer-hover:block px-2 py-1 mx-2 top-1/2 -translate-y-1/2 bg-background text-foreground text-sm rounded-md shadow-lg whitespace-nowrap z-50 ${labelDirection === "left" ? "right-full left-auto" : "left-full"}`}>
+                                        {label}
+                                    </span>
+                                </span>
+                            </Link>
+                        </div>
+                    );
+                } else {
+                    // Mobile Portrait Layout
+                    return (
+                        <div className="w-fit absolute cursor-pointer z-50">
+                            <Link href={link} target={newTab ? "_blank" : "_self"} className='text-foreground rounded-full flex items-center custom-bg' aria-label={label} name={label}>
+                                <span className='relative w-10 h-10 p-2.5 xs:w-14 xs:h-14 xs:p-4 hover:text-accent'>
+                                    {getIcon(icon)}
+                                    <span className="peer bg-transparent absolute top-0 left-0 w-full h-full"></span>
+                                    <span className={`absolute hidden peer-hover:block px-2 py-1 mx-2 top-1/2 -translate-y-1/2 bg-background text-foreground text-sm rounded-md shadow-lg whitespace-nowrap z-50 ${labelDirection === "left" ? "right-full left-auto" : "left-full"}`}>
+                                        {label}
+                                    </span>
+                                </span>
+                            </Link>
+                        </div>
+                    );
+                }
             }}
-       
         </ResponsiveComponent>
-    )
-}
+    );
+};
+
 
 export default NavButton;
