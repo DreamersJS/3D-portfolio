@@ -2,6 +2,7 @@ import localFont from "next/font/local";
 import "./globals.css";
 import clsx from "clsx";
 import FirefliesBackground from "@/app/components/FirefliesBackground";
+import Sound from "./components/Sound";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -27,6 +28,8 @@ export default function RootLayout({ children }) {
       >
         {children}
         <FirefliesBackground/>
+        <Sound/>
+        <div id="my-modal"/>
       </body>
     </html>
   );
