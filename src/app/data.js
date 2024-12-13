@@ -27,6 +27,14 @@ export const projectsData = [
       date: "2024-07",
       demoLink: "https://talasam-deploy.vercel.app",
     },
+    // {
+    //   id: 5,
+    //   name: "Riddles",
+    //   description: "Riddles application where users can solve riddles and view the answers.",
+    //   date: "2024-12",
+    //   demoLink: "riddles-eight.vercel.app/",
+    // },
+  
   ];
   
   export const BtnList = [

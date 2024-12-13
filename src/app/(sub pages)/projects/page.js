@@ -14,7 +14,7 @@ export default function Home() {
       
       <ProjectList projects={projectsData} />
       
-      <div className="flex items-center justify-start fixed top-10 -left-24 h-screen">
+      <div className="flex items-center justify-start fixed top-6 lg:top-10 -translate-x-1/2 lg:translate-x-0 left-1/2 lg:-left-24 h-screen -z-10">
         <RenderModel>
           <Staff />
         </RenderModel>
