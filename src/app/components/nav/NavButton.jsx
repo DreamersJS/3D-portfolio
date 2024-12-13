@@ -3,6 +3,14 @@ import React from "react";
 import { BookOpenText, GithubIcon, Home, Linkedin, Palette, Phone, User } from "lucide-react";
 import ResponsiveComponent from "../ResponsiveComponent";
 import clsx from "clsx";
+import { motion } from "framer-motion";
+
+const item = {
+    hidden: { scale: 0 },
+    show: { scale: 1 },
+};
+
+const NavLink = motion(Link);
 
 const getIcon = (icon) => {
     switch (icon) {
@@ -33,7 +41,9 @@ const NavButton = ({ x, y, label, link, icon, newTab, labelDirection="right" }) 
                     // Desktop Layout
                     return (
                         <div className="absolute cursor-pointer z-50" style={{ transform: `translate(${x},${y})` }}>
-                            <Link href={link} target={newTab ? "_blank" : "_self"} className='text-foreground rounded-full flex items-center custom-bg' aria-label={label} name={label}>
+                            <NavLink 
+                            variants={item}
+                            href={link} target={newTab ? "_blank" : "_self"} className='text-foreground rounded-full flex items-center custom-bg' aria-label={label} name={label}>
                                 <span className='relative w-14 h-14 p-4 animate-spin-slow-reverse group-hover:pause hover:text-accent'>
                                     {getIcon(icon)}
                                     <span className="peer bg-transparent absolute top-0 left-0 w-full h-full"></span>
@@ -41,14 +51,14 @@ const NavButton = ({ x, y, label, link, icon, newTab, labelDirection="right" }) 
                                         {label}
                                     </span>
                                 </span>
-                            </Link>
+                            </NavLink>
                         </div>
                     );
                 } else if (width >= 480 && width > height) {
                     // Mobile Landscape Layout
                     return (
                         <div className="w-fit absolute cursor-pointer z-50 space-x-2">
-                            <Link href={link} target={newTab ? "_blank" : "_self"} className='text-foreground rounded-full flex items-center custom-bg' aria-label={label} name={label}>
+                            <NavLink variants={item} href={link} target={newTab ? "_blank" : "_self"} className='text-foreground rounded-full flex items-center custom-bg' aria-label={label} name={label}>
                                 <span className='relative w-10 h-10 p-2.5 xs:w-14 xs:h-14 xs:p-4 hover:text-accent'>
                                     {getIcon(icon)}
                                     <span className="peer bg-transparent absolute top-0 left-0 w-full h-full"></span>
@@ -56,14 +66,14 @@ const NavButton = ({ x, y, label, link, icon, newTab, labelDirection="right" }) 
                                         {label}
                                     </span>
                                 </span>
-                            </Link>
+                            </NavLink>
                         </div>
                     );
                 } else {
                     // Mobile Portrait Layout
                     return (
                         <div className="w-fit absolute cursor-pointer z-50">
-                            <Link href={link} target={newTab ? "_blank" : "_self"} className='text-foreground rounded-full flex items-center custom-bg' aria-label={label} name={label}>
+                            <NavLink variants={item} href={link} target={newTab ? "_blank" : "_self"} className='text-foreground rounded-full flex items-center custom-bg' aria-label={label} name={label}>
                                 <span className='relative w-10 h-10 p-2.5 xs:w-14 xs:h-14 xs:p-4 hover:text-accent'>
                                     {getIcon(icon)}
                                     <span className="peer bg-transparent absolute top-0 left-0 w-full h-full"></span>
@@ -71,7 +81,7 @@ const NavButton = ({ x, y, label, link, icon, newTab, labelDirection="right" }) 
                                         {label}
                                     </span>
                                 </span>
-                            </Link>
+                            </NavLink>
                         </div>
                     );
                 }
