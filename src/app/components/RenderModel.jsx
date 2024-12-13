@@ -15,11 +15,10 @@ const RenderModel = ({ children, className }) => {
     if (!clsx) return <div>Loading...</div>; // Wait until clsx is loaded
 
     return (
-        <Canvas className={clsx('w-screen h-screen -z-10 relative', className)}>
+        <Canvas shadows={false} className={clsx('w-screen h-screen -z-10 relative', className)}>
             <Suspense fallback={<Html center><div>Loading...</div></Html>}>
                 {children}
             </Suspense>
-            {/* <ambientLight intensity={0.5} /> */}
             <Environment preset="sunset" />
         </Canvas>
     );
