@@ -1,4 +1,12 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+Mostly comes from: [https://youtu.be/aZZrEE_UsIk](https://youtu.be/aZZrEE_UsIk)
+First time encountering Three.js & Responsive component(and I like it!).
+
+
+My adjustments: 
+
+- Resume downloadable as .pdf. 
+- A tweak to useScreenSize hook to include the height of the screen. Intended for mobile landscape. 
+<!-- - Email Confirmation -->
 
 ## Getting Started
 
