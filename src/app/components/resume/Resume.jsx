@@ -3,41 +3,44 @@ import {
     GithubIcon,
     Linkedin,
     Phone,
-    Globe,
     Mail,
     LocateIcon,
     CodeIcon,
 } from 'lucide-react';
 import ResponsiveComponent from '../ResponsiveComponent';
 import Link from 'next/link';
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import html2pdf from 'html2pdf.js';
 
-
+// firefox & chrome tested
 const Resume = () => {
     const resumeRef = useRef(null);
-    console.log("Outside handlePrint resumeRef:", resumeRef);
-    
+    const [isDownloading, setIsDownloading] = useState(false);
+
     const handlePrint = () => {
-        if (resumeRef.current) {
-          html2pdf()
-            .from(resumeRef.current)
-            .set({
-                margin: [20, 0, 20, 0], // Adjust margins
-                filename: 'Zvezda-Neycheva-Resume.pdf',
-                html2canvas: {
-                  scale: 2, // Increase the quality of the rendered image
-                },
-                jsPDF: {
-                  unit: 'mm',
-                  format: 'a4',
-                  orientation: 'portrait',
-                },
-              })
-              .save();
-            // .save("Zvezda-Neycheva-Resume.pdf");
+        if (resumeRef.current && !isDownloading) {
+            setIsDownloading(true);
+
+            html2pdf()
+                .from(resumeRef.current)
+                .set({
+                    margin: [20, 0, 20, 0],
+                    filename: 'Zvezda-Neycheva-Resume.pdf',
+                    html2canvas: {
+                        scale: 2, // Increase the quality of the rendered image
+                    },
+                    jsPDF: {
+                        unit: 'mm',
+                        format: 'a4',
+                        orientation: 'portrait',
+                    },
+                })
+                .save()
+                .then(() => {
+                    setIsDownloading(false);
+                });
         }
-      };
+    };
 
     return (
         <div className="min-h-screen bg-gray-100 py-12">
@@ -215,30 +218,22 @@ const Resume = () => {
                     </ResponsiveComponent>
                 </div>
 
-                {/* Footer Section */}
-                {/* <div className="bg-gray-50 py-6 text-center">
-          <h2 className="text-lg font-semibold text-gray-700 mb-4">Connect with Me</h2>
-          <div className="flex justify-center space-x-6">
-            <Link href="https://github.com/DreamersJS" target="_blank">
-              <GithubIcon className="w-8 h-8 text-gray-700 hover:text-blue-600" />
-            </Link>
-            <Link href="https://linkedin.com" target="_blank">
-              <Linkedin className="w-8 h-8 text-gray-700 hover:text-blue-600" />
-            </Link>
-          </div>
-        </div> */}
             </div>
 
             {/* button to print the resume */}
             <div className="text-center mt-6">
                 <button
                     onClick={() => {
-    console.log("Button clicked"); 
-    handlePrint();
-  }}
+                        handlePrint();
+                    }}
+                    disabled={isDownloading}
                     className="px-4 py-2 bg-background text-white rounded-lg"
                 >
-                    Download as PDF
+                    {isDownloading ? (
+                        <span>Downloading...</span>
+                    ) : (
+                        'Download as PDF'
+                    )}
                 </button>
             </div>
 
