@@ -9,16 +9,22 @@ import {
 } from 'lucide-react';
 import ResponsiveComponent from '../ResponsiveComponent';
 import Link from 'next/link';
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import html2pdf from 'html2pdf.js';
 
 // firefox & chrome tested
 const Resume = () => {
     const resumeRef = useRef(null);
     const [isDownloading, setIsDownloading] = useState(false);
+    const [isClient, setIsClient] = useState(false);
+
+    // Ensures that the code runs only on the client-side
+    useEffect(() => {
+      setIsClient(true);
+    }, []);
 
     const handlePrint = () => {
-        if (resumeRef.current && !isDownloading) {
+        if (resumeRef.current && !isDownloading && isClient) {
             setIsDownloading(true);
 
             html2pdf()
