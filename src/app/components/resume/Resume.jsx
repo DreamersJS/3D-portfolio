@@ -12,7 +12,7 @@ import Link from 'next/link';
 import React, { useRef, useState } from 'react';
 import html2pdf from 'html2pdf.js';
 
-// firefox & chrome tested
+// firefox & chrome tested 
 const Resume = () => {
     const resumeRef = useRef(null);
     const [isDownloading, setIsDownloading] = useState(false);
