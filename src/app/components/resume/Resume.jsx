@@ -10,43 +10,43 @@ import {
 import ResponsiveComponent from '../ResponsiveComponent';
 import Link from 'next/link';
 import React, { useEffect, useRef, useState } from 'react';
-// import html2pdf from 'html2pdf.js';
+import html2pdf from 'html2pdf.js';
 
 // firefox & chrome tested
 const Resume = () => {
-    // const resumeRef = useRef(null);
-    // const [isDownloading, setIsDownloading] = useState(false);
-    // const [isClient, setIsClient] = useState(false);
+    const resumeRef = useRef(null);
+    const [isDownloading, setIsDownloading] = useState(false);
+    const [isClient, setIsClient] = useState(false);
 
     // Ensures that the code runs only on the client-side
-    // useEffect(() => {
-    //   setIsClient(true);
-    // }, []);
+    useEffect(() => {
+      setIsClient(true);
+    }, []);
 
-    // const handlePrint = () => {
-    //     if (resumeRef.current && !isDownloading && isClient) {
-    //         setIsDownloading(true);
+    const handlePrint = () => {
+        if (resumeRef.current && !isDownloading && isClient) {
+            setIsDownloading(true);
 
-    //         html2pdf()
-    //             .from(resumeRef.current)
-    //             .set({
-    //                 margin: [20, 0, 20, 0],
-    //                 filename: 'Zvezda-Neycheva-Resume.pdf',
-    //                 html2canvas: {
-    //                     scale: 2, // Increase the quality of the rendered image
-    //                 },
-    //                 jsPDF: {
-    //                     unit: 'mm',
-    //                     format: 'a4',
-    //                     orientation: 'portrait',
-    //                 },
-    //             })
-    //             .save()
-    //             .then(() => {
-    //                 setIsDownloading(false);
-    //             });
-    //     }
-    // };
+            html2pdf()
+                .from(resumeRef.current)
+                .set({
+                    margin: [20, 0, 20, 0],
+                    filename: 'Zvezda-Neycheva-Resume.pdf',
+                    html2canvas: {
+                        scale: 2, // Increase the quality of the rendered image
+                    },
+                    jsPDF: {
+                        unit: 'mm',
+                        format: 'a4',
+                        orientation: 'portrait',
+                    },
+                })
+                .save()
+                .then(() => {
+                    setIsDownloading(false);
+                });
+        }
+    };
 
     return (
         <div className="min-h-screen bg-gray-100 py-12">
@@ -227,7 +227,7 @@ const Resume = () => {
             </div>
 
             {/* button to print the resume */}
-            {/* <div className="text-center mt-6">
+            <div className="text-center mt-6">
                 <button
                     onClick={() => {
                         handlePrint();
@@ -241,7 +241,7 @@ const Resume = () => {
                         'Download as PDF'
                     )}
                 </button>
-            </div> */}
+            </div>
 
         </div>
     );
