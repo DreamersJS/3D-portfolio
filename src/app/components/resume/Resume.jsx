@@ -9,15 +9,18 @@ import {
 } from 'lucide-react';
 import ResponsiveComponent from '../ResponsiveComponent';
 import Link from 'next/link';
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import html2pdf from 'html2pdf.js';
 
 // firefox & chrome tested
 const Resume = () => {
     const resumeRef = useRef(null);
+    const [isDownloading, setIsDownloading] = useState(false);
 
     const handlePrint = () => {
-        if (resumeRef.current) {
+        if (resumeRef.current && !isDownloading) {
+            setIsDownloading(true);
+
             html2pdf()
                 .from(resumeRef.current)
                 .set({
@@ -32,7 +35,10 @@ const Resume = () => {
                         orientation: 'portrait',
                     },
                 })
-                .save();
+                .save()
+                .then(() => {
+                    setIsDownloading(false);
+                });
         }
     };
 
@@ -220,9 +226,14 @@ const Resume = () => {
                     onClick={() => {
                         handlePrint();
                     }}
+                    disabled={isDownloading}
                     className="px-4 py-2 bg-background text-white rounded-lg"
                 >
-                    Download as PDF
+                    {isDownloading ? (
+                        <span>Downloading...</span>
+                    ) : (
+                        'Download as PDF'
+                    )}
                 </button>
             </div>
 
