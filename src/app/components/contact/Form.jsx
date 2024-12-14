@@ -8,21 +8,8 @@ import { sendEmail } from '@/app/../../service/service.email';
 export default function Form() {
     const { register, handleSubmit, formState: { errors }, reset } = useForm();
 
-    // Check if email domain can receive emails
-    const handleEmailDomainCheck = async (email) => {
-        try {
-            const response = await fetch(`/api/checkEmailDomain?email=${email}`);
-            if (!response.ok) throw new Error('Network response was not ok');
-            return true;
-        } catch (error) {
-            console.error('Error checking email domain:', error);
-            return false;
-        }
-    };
-
     const onSubmit = async (data) => {
-        const isDomainValid = await handleEmailDomainCheck(data.email);
-        if (!isDomainValid) {
+        if (!data.email ) {
             toast.error('Invalid domain or no MX records found!', {
                 duration: 5000,
                 icon: <MailX />,

@@ -2,7 +2,6 @@
 import Image from "next/image";
 import bg from "../../../../public/background/contact-background.png";
 import Form from "@/app/components/contact/Form";
-import EmailConfirmationForm from "@/app/components/contact/Email ConfirmationForm";
 
 export default function Contact() {
 
@@ -17,7 +16,6 @@ export default function Contact() {
                 </div>
 
             </article>
-            {/* <EmailConfirmationForm/> */}
             <Form />
 
         </>
