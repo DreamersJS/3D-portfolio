@@ -14,7 +14,7 @@ import React, { useEffect, useRef, useState } from 'react';
 
 // firefox & chrome tested 
 const Resume = () => {
-    const resumeRef = useRef(null);
+    // const resumeRef = useRef(null);
     // const [isDownloading, setIsDownloading] = useState(false);
     // const [isClient, setIsClient] = useState(false);
 
