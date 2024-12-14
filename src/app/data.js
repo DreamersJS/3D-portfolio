@@ -56,8 +56,8 @@ export const projectsData = [
     },
     {
       label: "Resume",
-      link: "/resume.pdf",
+      link: "/resume",
       icon: "resume",
-      newTab: true,
+      newTab: false,
     },
   ];
