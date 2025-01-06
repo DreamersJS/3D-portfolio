@@ -10,15 +10,15 @@ export default async function sendEmail5(req, res) {
             port: 587,
             secure: false, 
             auth: {
-                user: 'wbk2xfdyzcy3yybk@ethereal.email', 
-                pass: 'cjUc4uBMUnggUDTQGd', 
+                user: process.env.NEXT_PUBLIC_ETHEREAL_USER, 
+                pass: process.env.NEXT_PUBLIC_ETHEREAL_PASS, 
             },
         });
 
         try {
             // Send the email
             const info = await transporter.sendMail({
-                from: 'wbk2xfdyzcy3yybk@ethereal.email', // Sender address. Must match the authenticated email. SMTP Authentication: When you authenticate with an SMTP service, you're essentially saying that you are authorized to send emails from that particular email address. As a result, services like Ethereal (or Gmail, SendGrid, etc.) require that the "from" address matches the one you've authenticated with.
+                from: process.env.NEXT_PUBLIC_ETHEREAL_USER, // Sender address. Must match the authenticated email. SMTP Authentication: When you authenticate with an SMTP service, you're essentially saying that you are authorized to send emails from that particular email address. As a result, services like Ethereal (or Gmail, SendGrid, etc.) require that the "from" address matches the one you've authenticated with.
                 to, // List of recipients
                 subject, 
                 text, // Plain text body
