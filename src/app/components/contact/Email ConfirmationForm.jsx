@@ -67,7 +67,9 @@ export default function EmailConfirmationForm() {
     const onSubmit = async (data) => {
         setLoading(true);
 
-        const isDomainValid = await handleEmailDomainCheck(data.email);
+// Error handling: In handleEmailDomainCheck, if the API call fails, you're assuming an invalid domain. It might be helpful to differentiate between network issues and domain validity errors to provide more accurate feedback.
+// accessibility: Consider adding aria-live or similar attributes to inform screen readers about success or error messages.
+    const isDomainValid = await handleEmailDomainCheck(data.email);
         if (!isDomainValid) {
             setLoading(false);
             return;

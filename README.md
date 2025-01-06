@@ -1,7 +1,10 @@
+<!-- 
+docker-compose up --build
+-->
 # Portfolio - Three.js & Responsive Demo
 
 Mostly comes from tutorial: [https://youtu.be/aZZrEE_UsIk](https://youtu.be/aZZrEE_UsIk)<br/>
-First time encountering Three.js & Responsive component(and I like it!).
+First time encountering Three.js & Responsive component(and I like it!). I learned more about mobile responsiveness and intend to use it in my next project. 
 
 A demo without Resume downloadable as .pdf & Email Confirmation but with responsive mobile landscape.
 DEMO: [https://portfolio-magic-gold.vercel.app/](https://portfolio-magic-gold.vercel.app/)
@@ -12,6 +15,7 @@ My adjustments:
 - A tweak to useScreenSize hook to include the height of the screen. Intended for mobile landscape. 
 - Improved Email Format Validation
 <!-- - Email Confirmation -->
+
 
 ## Getting Started
 
