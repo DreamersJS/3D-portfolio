@@ -30,15 +30,35 @@ My adjustments:
    npm install
 ```
 
-3. ### Run the development server:
+3. ### Configure environment variables
+ Create a .env file and set up environment variables for services like EMAIL JS and REDIS. <br/>
+- `EMAIL_JS`: Your EmailJS API key.
+- `REDIS`: Configuration for your Redis service.
+- `NEXT_PUBLIC_APP_URL`: The public URL for your app, typically `http://localhost:3000` during development.
+
+You also have a script to create an Ethereal account:
+ ```bash
+ node scripts/createEtherealAccount.js
+ ```
+
+1. ### Run the development server:
 
 ```bash
 npm run dev
 ```
 
-or
+or use Docker (Containerized environment):
 ```bash
 docker-compose up --build
 ```
+*Adjust Dockerfile and docker-compose.yaml with your port*
 
 Open [http://localhost:3000](http://localhost:3001) with your browser to see the result.
+
+
+---
+
+### Contact
+For inquiries or suggestions, feel free to reach out at [neychevazvezda@gmail.com](mailto:neychevazvezda@gmail.com).
+
+---
