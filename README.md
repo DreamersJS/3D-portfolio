@@ -3,16 +3,16 @@ docker-compose up --build
 -->
 # Portfolio - Three.js & Responsive Demo
 
-Mostly comes from tutorial: [https://youtu.be/aZZrEE_UsIk](https://youtu.be/aZZrEE_UsIk)<br/>
-First time encountering Three.js & Responsive component(and I like it!). I learned more about mobile responsiveness and intend to use it in my next project. 
+This project is mostly based on the tutorial from this : [YouTube video](https://youtu.be/aZZrEE_UsIk)<br/>
+It’s my first time encountering Three.js and implementing a responsive component, and I really liked the experience! I learned more about mobile responsiveness and plan to use it in my next project. 
 
 A demo without Resume downloadable as .pdf & Email Confirmation but with responsive mobile landscape.
-DEMO: [https://portfolio-magic-gold.vercel.app/](https://portfolio-magic-gold.vercel.app/)
+DEMO: [DEMO:Portfolio](https://portfolio-magic-gold.vercel.app/)
 
-My adjustments: 
+**My adjustments**: 
 
-- Resume downloadable as .pdf. 
-- A tweak to useScreenSize hook to include the height of the screen. Intended for mobile landscape. 
+- *Resume* available for download as a PDF. 
+- A tweak to `useScreenSize` hook to include the height of the screen. Intended for mobile landscape. 
 - Improved Email Format Validation
 <!-- - Email Confirmation -->
 
@@ -20,6 +20,7 @@ My adjustments:
 ## Getting Started
 
 1.  ### Clone the repository
+  First, clone the repository and navigate to the project folder:
 ```bash
    git clone https://github.com/DreamersJS/3D-portfolio.git
    cd 3D-portfolio
@@ -41,7 +42,7 @@ You also have a script to create an Ethereal account:
  node scripts/createEtherealAccount.js
  ```
 
-1. ### Run the development server:
+4. ### Run the development server:
 
 ```bash
 npm run dev
@@ -53,7 +54,7 @@ docker-compose up --build
 ```
 *Adjust Dockerfile and docker-compose.yaml with your port*
 
-Open [http://localhost:3000](http://localhost:3001) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3001) with your browser to see the result. If you're using Docker, it might be running on another port depending on your configuration.
 
 
 ---
