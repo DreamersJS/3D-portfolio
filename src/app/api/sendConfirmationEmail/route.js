@@ -1,21 +1,20 @@
 import { NextResponse } from 'next/server';
-import { sendEmail } from '@/app/../../service/service.email';
 import redisClient, { connectRedis } from '@/app/../../service/redisClient';
 import { generateToken, hashToken } from '@/app/../../service/tokenService';
 import { rateLimiter } from '@/app/../../service/rateLimiter';
-import {sendEmail2, sendEmail3, sendEmail4 } from '@/app/../../service/serverEmail';
+import sendEmail5 from '../../../../service/nodemailer';
 
 export async function POST(req) {
     const { searchParams } = new URL(req.url);
     const email = searchParams.get('email');
+    // const { email } = await req.json();
     const ip = req.headers.get('x-forwarded-for') || req.socket.remoteAddress || req.ip;
 
-    // if (!rateLimiter(ip)) {
-    //     return NextResponse.json({ message: 'Too many requests, please try again later.' }, { status: 429 });
-    // }
+    if (!rateLimiter(ip)) {
+        return NextResponse.json({ message: 'Too many requests, please try again later.' }, { status: 429 });
+    }
 
     await connectRedis();
-    // const { email } = await req.json();
 
     const token = generateToken();
     const hashedToken = await hashToken(token);
@@ -38,14 +37,13 @@ export async function POST(req) {
     console.log(`Confirmation link: ${confirmationLink}`);
     try {
         // Send the confirmation email
-        const templateParams = {
-            to_name: email,
-            from_name: 'Email Confirmation',
-            reply_to: email,
-            message: `Please confirm your email by clicking the link: ${confirmationLink}`,
+        const templateParams2 = {
+            to: email,
+            subject,
+            text: `Please confirm your email by clicking the link: ${confirmationLink}`,
         };
 
-        await sendEmail4(templateParams);
+        await sendEmail5(templateParams2);
 
         return NextResponse.json({ message: 'Confirmation email sent!' }, { status: 200 });
     } catch (error) {

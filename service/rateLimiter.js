@@ -1,29 +1,18 @@
+export async function rateLimiter(ip) {
+    const redisKey = `rate_limit:${ip}`;
+    const maxRequests = 10;
+    const timeWindow = 60;
 
-const rateLimits = {}; 
-// 3 requests per 15 minutes
-export const rateLimiter = (ip, limit = 3, windowMs = 15 * 60 * 1000) => {
-    const now = Date.now();
+    try {
+        const [incrementResult] = await redisClient
+            .multi()
+            .incr(redisKey)
+            .expire(redisKey, timeWindow)
+            .exec();
 
-    // Check if the IP exists in the rateLimits object
-    if (!rateLimits[ip]) {
-        rateLimits[ip] = { count: 1, firstRequestTime: now };
-    } else {
-        const { count, firstRequestTime } = rateLimits[ip];
-
-        // Check if the time window has expired
-        if (now - firstRequestTime < windowMs) {
-            // Still within the window
-            if (count >= limit) {
-                // Rate limit exceeded
-                return false;
-            } else {
-                // Increment the count
-                rateLimits[ip].count += 1;
-            }
-        } else {
-            // Reset the count and the time window
-            rateLimits[ip] = { count: 1, firstRequestTime: now };
-        }
+        return incrementResult <= maxRequests;
+    } catch (error) {
+        console.error('Error in rate limiter:', error);
+        return false;  
     }
-    return true; 
-};
+}

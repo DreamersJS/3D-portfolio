@@ -3,31 +3,7 @@ import React from 'react';
 import { useForm } from 'react-hook-form';
 import { Toaster, toast } from 'sonner';
 import { MailCheck, MailX } from 'lucide-react';
-import emailjs from '@emailjs/browser';
-
-const sendEmail = async (params) => {
-    try {
-        const response = await emailjs.send(
-            process.env.NEXT_PUBLIC_SERVICE_ID,
-            process.env.NEXT_PUBLIC_TEMPLATE_ID,
-            params,
-            {
-                publicKey: process.env.NEXT_PUBLIC_PUBLIC_KEY,
-                limitRate: {
-                    throttle: 5000,
-                },
-            }
-        );
-        console.log('Email sent successfully:', response);
-        return response;  
-    } catch (error) {
-        console.error('Email send failed:', error.text);
-        if (error.response) {
-            console.error('Error response from email service:', error.response);
-        }
-        throw new Error(error.text || 'Failed to send email');
-    }
-};
+import { sendEmail } from '@/app/../../service/service.email';
 
 export default function Form() {
     const { register, handleSubmit, formState: { errors }, reset } = useForm();
