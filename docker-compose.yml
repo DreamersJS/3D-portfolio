@@ -4,7 +4,11 @@ services:
     build: .
     ports:
       - "3001:3000"  # Map host port 3001 to container port 3000
+    cpus: "0.5"
     volumes:
-      - .:/src/app  # Mount the current directory into the container
-      - /node_modules  # Keep node_modules inside the container
+      - .:/src/app   # live reload
+      - /node_modules  # to persist data or share files between the container and the host system
+    environment:
+      NODE_ENV: development  
     command: npm run dev  # Command to start the Next.js app
+    

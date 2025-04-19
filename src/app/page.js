@@ -10,7 +10,7 @@ const Wizard = dynamic(() => import('@/app/components/models/Wizard'), { ssr: fa
 export default function Home() {
   return (
     <main className="flex min-h-screen flex-col items-center justify-between relative">
-      <Image priority sizes="100vw" src={bg} alt="background-image" className="w-full h-full object-cover object-center opacity-10" layout="fill" />
+      <Image priority sizes="100vw" src={bg} alt="background-image" className="w-full h-full object-cover object-center opacity-10" fill />
 
       <Nav />
       <div className="w-full h-screen">
