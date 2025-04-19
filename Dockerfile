@@ -1,8 +1,11 @@
 # Use an official Node.js image from Docker Hub
 FROM node:18
 
+# ENV TURBOPACK=1
+# ENV NEXT_TELEMETRY_DISABLED=1
+
 # Set the working directory inside the container
-WORKDIR /src/app
+WORKDIR /app
 
 # Copy package.json and package-lock.json to the container(to cache dependencies)
 COPY package*.json ./
@@ -10,7 +13,7 @@ COPY package*.json ./
 # Install the dependencies
 RUN npm install
 
-# Copy the rest of your application code
+# The COPY . . command will copy everything (including your node_modules and .next directories) into /src/app. You might not want this because it could conflict with volumes in docker-compose.yml. You'd want to avoid copying node_modules and .next into the container from the host.ADD a .dockerignore file to exclude these directories.
 COPY . .
 
 # Expose the port the app will run on

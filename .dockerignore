@@ -1,0 +1,12 @@
+# Don't copy node modules (they're rebuilt in container)
+node_modules
+npm-debug.log
+yarn-error.log
+
+# Next.js build output
+.next
+
+# OS/system stuff
+.DS_Store
+*.swp
+.env

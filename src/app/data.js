@@ -33,8 +33,14 @@ export const projectsData = [
     //   description: "Riddles application where users can solve riddles and view the answers.",
     //   date: "2024-12",
     //   demoLink: "riddles-eight.vercel.app/",
-    // },
-  
+    // }, 
+    {
+      id: 5,
+      name: "Wellness website",
+      description: "Wellness website with user authentication and personalized wellness plans and coaches.",
+      date: "2024-12-17",
+      demoLink: "https://github.com/DreamersJS/website17",
+    },
   ];
   
   export const BtnList = [
