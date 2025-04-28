@@ -18,7 +18,7 @@ export default function Contact() {
 
             </article>
             <Form />
-            <EmailConfirmationForm/>
+            {/* <EmailConfirmationForm/> */}
         </>
     );
 }

@@ -41,6 +41,14 @@ export const projectsData = [
       date: "2024-12-17",
       demoLink: "https://github.com/DreamersJS/website17",
     },
+    // https://github.com/DreamersJS/monopoly
+    {
+      id: 6,
+      name: "Wellness monopoly",
+      description: "Game with a wellness theme.",
+      date: "2025-04",
+      demoLink: "https://github.com/DreamersJS/monopoly",
+    },
   ];
   
   export const BtnList = [

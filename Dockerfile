@@ -10,6 +10,11 @@ WORKDIR /app
 # Copy package.json and package-lock.json to the container(to cache dependencies)
 COPY package*.json ./
 
+# 
+ENV TURBOPACK=1
+# 
+ENV NEXT_TELEMETRY_DISABLED=1
+
 # Install the dependencies
 RUN npm install
 
