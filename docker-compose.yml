@@ -7,9 +7,9 @@ services:
     cpus: "0.5"
     working_dir: /app
     volumes:
-      #- .:/app   # live reload
+      - .:/app   # live reload
       - /app/node_modules  # Ignore the node_modules from the host, and use a clean internal one just for this container - Avoids dependency crashes
-      #- /app/.next         # avoid syncing build artifacts. Speeds up reloads, avoids bugs
+      - /app/.next         # avoid syncing build artifacts. Speeds up reloads, avoids bugs
     environment:
       NODE_ENV: development  
     command: npm run dev  # Command to start the Next.js app
