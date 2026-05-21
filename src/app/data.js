@@ -4,17 +4,15 @@ export const projectsData = [
     name: "ZAMO Chat App (Team Project)",
     description: "Real-time communication platform with messaging, video calls, channels, reactions, and friend management",
     highlights: [
-      "Implemented WebRTC video calls with Firebase signaling and TURN server",
-      "Tested locally with tunneling before deployment",
-      "Tested in deployment on various devices, browsers",
-      "Built real-time messaging system with live updates",
-      "Created authentication and profile management flows",
-      "Collaborated in a 3-person team using GitHub workflows",
-      "Deployed production app on Vercel with custom routing fixes",
-      // "Decoupled user and media in db",
+      "Implemented WebRTC video calls with Firebase signaling and TURN server support",
+      "Built real-time messaging, channels, reactions, and friend management features",
+      "Developed authentication and profile management flows using React Context API",
+      "Resolved production deployment and React Router routing issues on Vercel",
+      "Tested cross-browser and multi-device WebRTC compatibility",
+      "Collaborated in a 3-person team using GitHub workflows"
     ],
     image: '/images/zamo-chat.png',
-    techStack: ["React", "React Router", "TailwindCSS", "Firebase", "WebRTC", "Git"],
+    techStack: ["React", "TailwindCSS", "Firebase", "WebRTC"],
     type: "Front-end",
     demoLink: "https://zamo-chat-app.vercel.app",
     githubLink: "https://github.com/Alpha-55-JS-Web-Programming/Final-Project-Team5",
@@ -33,7 +31,7 @@ export const projectsData = [
       "Implemented DeepL API translation"
     ],
     image: '/images/socket-chat.png',
-    techStack: ["Express", "Socket.io", "MySQL", "JWT", "bcrypt", "Git", "DeepL API"],
+    techStack: ["Express", "Socket.io", "MySQL", "JWT"],
     type: "Full-stack",
     demoLink: "",
     githubLink: "https://github.com/DreamersJS/express-project1",
@@ -43,11 +41,14 @@ export const projectsData = [
     name: "Whiteboard App",
     description: "Collaborative online whiteboard for drawing and chatting in real time.",
     highlights: [
-      "Implemented persistent login with cookies and client-side state management using Recoil.",
-      "Containerized back-end services with Docker and managed back-end versioning with GHCR",
+      "Developed collaborative real-time drawing synchronization using Socket.IO",
+      "Implemented persistent authentication with cookies and Recoil state management",
+      "Built interactive drawing features using HTML Canvas",
+      "Containerized backend services with Docker and managed versions through GHCR",
+      "Built room-based socket communication for shared whiteboard sessions"
     ],
     image: '/images/whiteboard.png',
-    techStack: ["Next.js", "Socket.io", "TailwindCSS", "Firebase", "React Testing Library", "Jest", "Git"],
+    techStack: ["Next.js", "Socket.io", "TailwindCSS", "Firebase", "Docker", "Jest"],
     type: "Full-stack",
     demoLink: "https://whiteboard-app-green-psi.vercel.app",
     githubLink: "https://github.com/DreamersJS/next.js-project1",
@@ -71,16 +72,17 @@ export const projectsData = [
     name: "Wellness Website",
     description: "Full-stack wellness platform with products, cart, authentication, and admin features.",
     highlights: [
-      `Implemented JWT authentication with refresh-token rotation and silent login.`,
-      "Implemented email verification flow using Redis, Nodemailer and Ethereal for testing.",
-      "Developed REST APIs with PostgreSQL and Prisma ORM. Products controller is using CQRS-inspired structure",
-      "Added testing using Jest, Vitest, and SuperTest.",
-      "Configured secondary testing database environment with Docker."
+      "Implemented JWT authentication with refresh-token rotation and silent login",
+      "Built email verification flow using Redis, Nodemailer, and Ethereal",
+      "Developed REST APIs with PostgreSQL and Prisma ORM",
+      "Structured product controllers using CQRS-inspired architecture",
+      "Added integration and unit testing with Jest, Vitest, and SuperTest",
+      "Configured isolated Docker-based testing database environments"
     ],
     image: '/images/wellness.png',
     techStack: [
-      "React", "Recoil", "Express", "TailwindCSS", "MUI", "PostgreSQL",
-      "Prisma ORM", "Nodemailer", "Redis", "JWT", "bcrypt", "React Testing Library", "Vitest", "Git", "Jest", "SuperTest"
+      "Recoil", "Express", "PostgreSQL",
+      "Prisma ORM", "Nodemailer", "Redis", "JWT", "Vitest", "Jest", "SuperTest"
     ],
     type: "Full-stack",
     demoLink: "",
