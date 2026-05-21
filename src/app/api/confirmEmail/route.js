@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server';
-import redisClient, { connectRedis } from '@/service/redisClient';
-import { verifyToken } from '@/service/tokenService';
+import redisClient, { connectRedis } from '../../../../service/redisClient';
+import { verifyToken } from '../../../../service/tokenService';
 
 export async function GET(req) {
     await connectRedis();

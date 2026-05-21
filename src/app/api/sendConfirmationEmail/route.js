@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server';
-import redisClient, { connectRedis } from '@/app/../../service/redisClient';
-import { generateToken, hashToken } from '@/app/../../service/tokenService';
-import { rateLimiter } from '@/app/../../service/rateLimiter';
+import redisClient, { connectRedis } from '../../../../service/redisClient';
+import { generateToken, hashToken } from '../../../../service/tokenService';
+import { rateLimiter } from '../../../../service/rateLimiter';
 import sendEmail5 from '../../../../service/nodemailer';
 
 export async function POST(req) {
