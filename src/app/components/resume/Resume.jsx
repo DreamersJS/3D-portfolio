@@ -20,7 +20,7 @@ const Resume = () => {
 
     // Ensures that the code runs only on the client-side
     useEffect(() => {
-      setIsClient(true);
+        setIsClient(true);
     }, []);
 
     const handlePrint = () => {
@@ -49,7 +49,7 @@ const Resume = () => {
     };
 
     return (
-        <div className="min-h-screen bg-gray-100 py-12">
+        <div className="min-h-screen bg-gray-100 py-4">
             <div ref={resumeRef} className="max-w-4xl mx-auto bg-white overflow-hidden">
                 {/* Header Section */}
                 <div className="bg-gray-600 text-white text-center p-8">
@@ -73,10 +73,7 @@ const Resume = () => {
                                                 Profile
                                             </h2>
                                             <p className="text-gray-600 leading-relaxed">
-                                                Enthusiastic and motivated Junior Front-End Developer with hands-on
-                                                experience building responsive and dynamic web applications. Skilled
-                                                in React, Next.js, Express.js, Socket.IO, and more. A fast learner
-                                                and team player passionate about creating seamless user experiences.
+                                                Junior Full-Stack Developer with hands-on experience building real-time and production-ready web applications.
                                             </p>
                                         </section>
 
@@ -119,12 +116,6 @@ const Resume = () => {
                                                     </strong>
                                                     <span className="block text-gray-500">2023-2024</span>
                                                 </li>
-                                                <li>
-                                                    <strong className="text-gray-700">
-                                                        1SOU Pencho P Slavekov - High School Diploma
-                                                    </strong>
-                                                    <span className="block text-gray-500">2011-2014</span>
-                                                </li>
                                             </ul>
                                         </section>
                                     </div>
@@ -138,14 +129,16 @@ const Resume = () => {
                                             </h2>
                                             <ul className="grid grid-cols-2 gap-2">
                                                 <li className="text-gray-600">React.js</li>
+                                                <li className="text-gray-600">Vite</li>
                                                 <li className="text-gray-600">Next.js</li>
                                                 <li className="text-gray-600">Express.js</li>
                                                 <li className="text-gray-600">Socket.IO</li>
-                                                <li className="text-gray-600">Vite</li>
                                                 <li className="text-gray-600">Firebase</li>
                                                 <li className="text-gray-600">MySQL</li>
+                                                <li className="text-gray-600">Prisma ORM</li>
                                                 <li className="text-gray-600">Docker</li>
-                                                <li className="text-gray-600">HTML & CSS</li>
+                                                <li className="text-gray-600">Jest</li>
+                                                <li className="text-gray-600">Recoil</li>
                                                 <li className="text-gray-600">Tailwind CSS</li>
                                             </ul>
                                         </section>
@@ -169,13 +162,13 @@ const Resume = () => {
                                                     </Link>
                                                     <ul className="list-disc list-inside text-gray-600 mt-2">
                                                         <li>Real-time communication with Firebase database management.</li>
-                                                        <li>Tech Stack: React.js, Firebase, Tailwind CSS, Vite, NPM.</li>
+                                                        <li>Tech Stack: React.js, Firebase, Tailwind CSS, Vite, webRTC, NPM.</li>
                                                     </ul>
                                                 </div>
 
                                                 <div>
                                                     <h3 className="text-lg font-semibold text-gray-700">
-                                                        JavaScript Chat App with Socket.IO
+                                                        Chat App with Socket.IO
                                                     </h3>
                                                     <Link
                                                         href="https://github.com/DreamersJS/express-project1"
@@ -189,30 +182,42 @@ const Resume = () => {
                                                         <li>Tech Stack: React.js, Socket.IO, MySQL, Bcrypt, CORS.</li>
                                                     </ul>
                                                 </div>
-                                            </div>
-                                        </section>
 
-                                        {/* Work Experience */}
-                                        <section>
-                                            <h2 className="text-xl font-semibold text-gray-700 border-b pb-2 mb-4">
-                                                Work Experience
-                                            </h2>
-                                            <div className="space-y-6">
                                                 <div>
-                                                    <h3 className="text-lg font-semibold text-gray-700">Receptionist</h3>
-                                                    <p className="text-gray-500">Hotel Slavyanska Beseda | 09/2023 - 01/2024</p>
+                                                    <h3 className="text-lg font-semibold text-gray-700">
+                                                        Whiteboard App
+                                                    </h3>
+                                                    <Link
+                                                        href="https://github.com/DreamersJS/next.js-project1"
+                                                        target="_blank"
+                                                        className="text-blue-600"
+                                                    >
+                                                        GitHub Repository
+                                                    </Link>
                                                     <ul className="list-disc list-inside text-gray-600 mt-2">
-                                                        <li>Managed client relationships via email, phone, and on-site.</li>
-                                                        <li>Provided creative solutions to resolve client issues promptly.</li>
+                                                        <li>A collaborative real-time drawing application using
+                                                            Next.js 14 and Socket.IO.</li>
+                                                        <li>Tech Stack: Next.js 14, Socket.IO, Firebase, Recoil, Docker, App Router,
+                                                            HTML Canvas.</li>
                                                     </ul>
                                                 </div>
 
                                                 <div>
-                                                    <h3 className="text-lg font-semibold text-gray-700">Cashier</h3>
-                                                    <p className="text-gray-500">Lidl International | 05/2018 - 04/2023</p>
+                                                    <h3 className="text-lg font-semibold text-gray-700">
+                                                        Wellness E-commerce Website
+                                                    </h3>
+                                                    <Link
+                                                        href="https://github.com/DreamersJS/website17"
+                                                        target="_blank"
+                                                        className="text-blue-600"
+                                                    >
+                                                        GitHub Repository
+                                                    </Link>
                                                     <ul className="list-disc list-inside text-gray-600 mt-2">
-                                                        <li>Maintained accuracy and speed during high-pressure tasks.</li>
-                                                        <li>Collaborated with team members to achieve nightly restocking goals.</li>
+                                                        <li>A full-stack wellness platform with product catalog,
+                                                            cart system, and role-based admin tools.</li>
+                                                        <li>Tech Stack: React.js, Express.js, PostgreSQL, Prisma ORM, Redis, Nodemailer,
+                                                            Docker, Tailwind CSS, Material UI, Bcrypt, CORS.</li>
                                                     </ul>
                                                 </div>
                                             </div>

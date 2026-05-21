@@ -10,7 +10,7 @@ const item = {
 const ProjectLayout = ({
     name,
     description,
-    story,
+    highlights,
     image,
     techStack = [],
     type,
@@ -98,11 +98,15 @@ const ProjectLayout = ({
                     </div>
                 </div>
             </div>
-            {/* Story */}
-            {story && (
+            {/* highlights */}
+            {highlights && (
                 <details className="mt-4 md:mt-0 md:ml-6 cursor-pointer">
                     <summary className="">Details</summary>
-                    <p className="mt-2 text-slate-300 text-md whitespace-pre-line ml-4 list-disc">{story}</p>
+                    <ul className="mt-2 text-slate-300 text-md ml-6 list-disc space-y-2">
+                        {highlights.map((highlight, index) => (
+                            <li key={index}>{highlight}</li>
+                        ))}
+                    </ul>
                 </details>
             )}
         </motion.div>
