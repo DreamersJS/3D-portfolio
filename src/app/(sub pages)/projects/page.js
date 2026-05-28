@@ -1,12 +1,12 @@
 'use client';
 import Image from "next/image";
-import bg from "../../../../public/background/projects-background.png";
-import ProjectList from "@/app/components/projects";
+import bg from "../../../../public/background/projects-background.webp";
+import ProjectList from "@/components/projects";
 import { projectsData } from "@/app/data";
-import RenderModel from "@/app/components/RenderModel";
+import RenderModel from "@/components/RenderModel";
 import dynamic from "next/dynamic";
 
-const Staff = dynamic(() => import('@/app/components/models/Staff'), { ssr: false });
+const Staff = dynamic(() => import('@/components/models/Staff'), { ssr: false });
 
 export default function Home() {
 

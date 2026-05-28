@@ -1,11 +1,9 @@
 'use client';
 import {
     GithubIcon,
-    Linkedin,
     Phone,
     Mail,
     LocateIcon,
-    CodeIcon,
 } from 'lucide-react';
 import ResponsiveComponent from '../ResponsiveComponent';
 import Link from 'next/link';

@@ -1,8 +1,8 @@
 import "./globals.css";
 import clsx from "clsx";
-import FirefliesBackground from "@/app/components/FirefliesBackground";
-import Sound from "./components/Sound";
-import AssetPreloader from './components/AssetPreloader';
+import FirefliesBackground from "@/components/FirefliesBackground";
+import Sound from "../components/Sound";
+// import AssetPreloader from '../components/AssetPreloader';
 
 export const metadata = {
   title: "Portfolio with 3D models",
@@ -15,7 +15,7 @@ export default function RootLayout({ children }) {
       <body
         className={clsx('bg-background text-foreground ',)}
       >
-        <AssetPreloader />
+        {/* <AssetPreloader /> */}
         {children}
         <FirefliesBackground/>
         <Sound/>

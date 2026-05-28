@@ -1,5 +1,4 @@
 'use client'
-import ResponsiveComponent from "../ResponsiveComponent";
 import Resume from "./Resume";
 
 const ResumeDetails = () => {

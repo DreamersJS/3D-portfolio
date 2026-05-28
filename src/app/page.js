@@ -1,20 +1,21 @@
 'use client';
 import Image from "next/image";
-import bg from "../../public/background/home-background.png";
-import RenderModel from '@/app/components/RenderModel'
-import Nav from "./components/nav/NavCircle";
+import bg from "../../public/background/home-background.webp";
+import RenderModel from '@/components/RenderModel'
+import Nav from "../components/nav/NavCircle";
 import dynamic from "next/dynamic";
-import ResponsiveComponent from "./components/ResponsiveComponent";
+import ResponsiveComponent from "../components/ResponsiveComponent";
 
-const PortfolioCube = dynamic(() => import('@/app/components/PortfolioCube'), { ssr: false });
+const PortfolioCube = dynamic(() => import('@/components/cube/PortfolioCube'), { ssr: false });
 
 export default function Home() {
   let cubeScale = 2.7;
   return (
     <main className="flex min-h-screen flex-col items-center justify-between relative">
-      <Image priority sizes="100vw" src={bg} alt="background-image" className="w-full h-full object-cover object-center opacity-10 -z-10" fill />
+      <Image priority sizes="100vw" src={bg} alt="background-image" className="w-full h-full object-cover object-center opacity-10 -z-10" fill placeholder="blur" />
 
       <Nav />
+      {/* fixed inset-0 overflow-hidden or absolute inset-0 */}
       <div className="w-full h-screen">
         <ResponsiveComponent>
           {

@@ -1,6 +1,5 @@
 'use client';
 
-import { motion } from "framer-motion";
 import { Volume2, VolumeX } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
@@ -85,8 +84,6 @@ const Sound = () => {
     return (
         <div className="fixed top-4 right-2 xs:right-4 z-50 group">
 
-
-
             {showModal && <Modal onClose={() => setShowModal(false)} toggleAudio={toggleAudio} />}
 
             <audio ref={audioRef} loop>
@@ -101,13 +98,12 @@ const Sound = () => {
                 aria-label={"audio"}
                 name={"audio"}>
 
-
-            {
-                isPlaying ?
-                <Volume2 className='w-full h-full text-foreground group-hover:text-accent' strokeWidth={1.5} />
-                :
-                <VolumeX className='w-full h-full text-foreground group-hover:text-accent' strokeWidth={1.5} />
-            }
+                {
+                    isPlaying ?
+                        <Volume2 className='w-full h-full text-foreground group-hover:text-accent' strokeWidth={1.5} />
+                        :
+                        <VolumeX className='w-full h-full text-foreground group-hover:text-accent' strokeWidth={1.5} />
+                }
             </button>
 
         </div>
