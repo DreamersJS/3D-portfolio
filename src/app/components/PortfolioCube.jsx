@@ -6,9 +6,8 @@ import { Edges, Html } from '@react-three/drei';
 import * as THREE from 'three';
 import useImageTexture from './hooks/useImageTexture.jsx';
 
-export default function PortfolioCube() {
+export default function PortfolioCube({cubeScale}) {
   const meshRef = useRef();
-  let cubeScale = 2.5;
 
   // WHICH SIDE IS ACTIVE
   const [currentFace, setCurrentFace] = useState(0);

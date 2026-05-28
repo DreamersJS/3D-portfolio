@@ -2,7 +2,6 @@ import Link from "next/link";
 import React from "react";
 import { BookOpenText, GithubIcon, Home, Linkedin, Palette, Phone, User } from "lucide-react";
 import ResponsiveComponent from "../ResponsiveComponent";
-import clsx from "clsx";
 import { motion } from "framer-motion";
 
 const item = {
