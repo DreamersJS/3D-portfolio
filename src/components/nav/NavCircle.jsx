@@ -4,26 +4,12 @@ import React from 'react';
 import NavButton from './NavButton';
 import useScreenSize from '../../hooks/useScreenSize';
 import ResponsiveComponent from '../ResponsiveComponent';
-import { motion } from 'framer-motion';
-
-const container = {
-    hidden: { opacity: 0 },
-    show: {
-        opacity: 1,
-        transition: {
-            staggerChildren: 0.3
-        }
-    }
-}
 
 const Nav = () => {
 
     const angleIncrement = 360 / BtnList.length;
-    const { width, height } = useScreenSize();
+    const { width } = useScreenSize();
 
-    if (width === null || height === null) {
-        return <div>Loading...</div>;
-    }
     const isLargeScreen = width > 1024;
     const isMediumScreen = width > 768 && width <= 1024;
 
@@ -35,8 +21,7 @@ const Nav = () => {
                         // Desktop Layout
                         if (width && width >= 480 && height > 480) {
                             return (
-                                <motion.div
-                                    variants={container}
+                                <div
                                     initial='hidden'
                                     animate='show'
 
@@ -51,13 +36,12 @@ const Nav = () => {
                                             return <NavButton key={btn.label} x={x} y={y} {...btn} />
                                         })
                                     }
-                                </motion.div>)
+                                </div>)
                         } else if (width >= 480 && width > height) {
                             // Mobile Landscape Layout
                             return (
                                 <>
-                                    <motion.div
-                                        variants={container}
+                                    <div
                                         initial='hidden'
                                         animate='show'
                                         className='w-full flex flex-row flex-wrap justify-evenly items-start mx-2'>
@@ -68,7 +52,7 @@ const Nav = () => {
                                                 </div>
                                             })
                                         }
-                                    </motion.div>
+                                    </div>
                                 </>
                             )
 
@@ -77,8 +61,7 @@ const Nav = () => {
                             return (
                                 <>
                                     {/* Left side buttons of the Mobile Nav */}
-                                    <motion.div
-                                        variants={container}
+                                    <div
                                         initial='hidden'
                                         animate='show'
                                         className='w-full px-2.5 xs:p-0 xs:w-max flex flex-col space-y-32 items-start xs:items-center justify-center relative group'>
@@ -87,10 +70,9 @@ const Nav = () => {
                                                 return <div key={btn.label} className='p-2'> <NavButton key={btn.label} x={0} y={0} {...btn} /></div>
                                             })
                                         }
-                                    </motion.div>
+                                    </div>
                                     {/* Right side buttons of the Mobile Nav */}
-                                    <motion.div
-                                        variants={container}
+                                    <div
                                         initial='hidden'
                                         animate='show' className='w-full px-2.5 xs:p-0 xs:w-max flex flex-col space-y-32 items-end xs:items-center justify-center relative group'>
                                         {
@@ -98,7 +80,7 @@ const Nav = () => {
                                                 return <div key={btn.label} className='mr-12 px-1'><NavButton key={btn.label} x={0} y={0} {...btn} labelDirection="left" /></div>
                                             })
                                         }
-                                    </motion.div>
+                                    </div>
                                 </>
                             )
 

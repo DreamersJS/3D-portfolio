@@ -1,25 +1,26 @@
 'use client';
-import { Environment } from '@react-three/drei';
+// import { Environment } from '@react-three/drei';
 import { Canvas } from '@react-three/fiber';
-import React, { Suspense, useEffect, useState } from 'react';
-import {  Html } from '@react-three/drei';
+import React, { Suspense } from 'react';
+// import { Html } from '@react-three/drei';
 
-const RenderModel = ({ children, className }) => {
-    const [clsx, setClsx] = useState(null);
-
-    useEffect(() => {
-        // Dynamically import clsx to check if import issues are resolved
-        import('clsx').then(module => setClsx(() => module.default));
-    }, []);
-
-    if (!clsx) return <div>Loading...</div>; // Wait until clsx is loaded
+const RenderModel = ({ children }) => {
 
     return (
-        <Canvas shadows={false} className={clsx('w-screen h-screen -z-10 relative', className)}>
-            <Suspense fallback={<Html center><div>Loading...</div></Html>}>
+        <Canvas
+            dpr={[1, 1.5]}
+            gl={{
+                antialias: false,
+                powerPreference: 'high-performance',
+            }}
+            shadows={false}
+            className='w-screen h-screen -z-10 relative'>
+            <Suspense fallback={null}>
                 {children}
             </Suspense>
-            <Environment preset="sunset" />
+            {/* <Environment preset="sunset" /> */}
+            <ambientLight intensity={0.5} />
+            <directionalLight position={[3, 2, 5]} intensity={1} />
         </Canvas>
     );
 };

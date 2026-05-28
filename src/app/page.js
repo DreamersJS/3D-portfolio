@@ -15,8 +15,8 @@ export default function Home() {
       <Image priority sizes="100vw" src={bg} alt="background-image" className="w-full h-full object-cover object-center opacity-10 -z-10" fill placeholder="blur" />
 
       <Nav />
-      {/* fixed inset-0 overflow-hidden or absolute inset-0 */}
-      <div className="w-full h-screen">
+
+      <div className="absolute inset-0">
         <ResponsiveComponent>
           {
             ({ width, height }) => {
