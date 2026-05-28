@@ -1,0 +1,36 @@
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile.prod
+      args:
+        SERVICE_ID: ${SERVICE_ID}
+        TEMPLATE_ID: ${TEMPLATE_ID}
+        PUBLIC_KEY: ${PUBLIC_KEY}
+        REDIS_HOST: ${REDIS_HOST}
+        REDIS_PORT: ${REDIS_PORT}
+        REDIS_USERNAME: ${REDIS_USERNAME}
+        REDIS_PASSWORD: ${REDIS_PASSWORD}
+        ETHEREAL_USER: ${ETHEREAL_USER}
+        ETHEREAL_PASS: ${ETHEREAL_PASS}
+
+    ports:
+      - "3001:3000"
+
+    env_file:
+      - .env
+
+    environment:
+      NODE_ENV: production
+      SERVICE_ID: ${SERVICE_ID}
+      TEMPLATE_ID: ${TEMPLATE_ID}
+      PUBLIC_KEY: ${PUBLIC_KEY}
+      REDIS_HOST: ${REDIS_HOST}
+      REDIS_PORT: ${REDIS_PORT}
+      REDIS_USERNAME: ${REDIS_USERNAME}
+      REDIS_PASSWORD: ${REDIS_PASSWORD}
+      ETHEREAL_USER: ${ETHEREAL_USER}
+      ETHEREAL_PASS: ${ETHEREAL_PASS}
+#docker compose -f docker-compose.prod.yml build --no-cache
+#docker compose -f docker-compose.prod.yml up
+#DOCKER_DEFAULT_PLATFORM=linux/amd64 docker compose -f docker-compose.prod.yml build --no-cache

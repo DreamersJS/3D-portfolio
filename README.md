@@ -35,7 +35,7 @@ DEMO: [DEMO:Portfolio](https://portfolio-magic-gold.vercel.app/)
  Create a .env file and set up environment variables for services like EMAIL JS and REDIS. <br/>
 - `EMAIL_JS`: Your EmailJS API key.
 - `REDIS`: Configuration for your Redis service.
-- `NEXT_PUBLIC_APP_URL`: The public URL for your app, typically `http://localhost:3000` during development.
+- `APP_URL`: The public URL for your app, typically `http://localhost:3000` during development.
 
 You also have a script to create an Ethereal account:
  ```bash

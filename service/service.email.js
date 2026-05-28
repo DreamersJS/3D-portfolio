@@ -3,11 +3,11 @@ import emailjs from '@emailjs/browser';
 export const sendEmail = async (params) => {
     try {
         const response = await emailjs.send(
-            process.env.NEXT_PUBLIC_SERVICE_ID,
-            process.env.NEXT_PUBLIC_TEMPLATE_ID,
+            process.env.SERVICE_ID,
+            process.env.TEMPLATE_ID,
             params,
             {
-                publicKey: process.env.NEXT_PUBLIC_PUBLIC_KEY,
+                publicKey: process.env.PUBLIC_KEY,
                 limitRate: {
                     throttle: 5000,
                 },

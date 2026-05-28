@@ -1,8 +1,9 @@
 export default {
-    reactStrictMode: true,
+    reactStrictMode: false,
     swcMinify: true, // Optional performance optimization
     images: {
       unoptimized: true,
     },
+    output: 'standalone',
   };
   

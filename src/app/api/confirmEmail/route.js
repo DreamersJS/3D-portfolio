@@ -1,10 +1,12 @@
+export const dynamic = "force-dynamic";
+export const runtime = 'nodejs';
 import { NextResponse } from 'next/server';
-import redisClient, { connectRedis } from '@/service/redisClient';
-import { verifyToken } from '@/service/tokenService';
+import { connectRedis } from '../../../../service/redisClient';
+import { verifyToken } from '../../../../service/tokenService';
 
 export async function GET(req) {
     await connectRedis();
-    
+
     const { searchParams } = new URL(req.url);
     const token = searchParams.get('token');
     const email = searchParams.get('email');

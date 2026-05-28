@@ -1,4 +1,6 @@
-import { checkDomainMxRecords } from '@/../service/service.emailDomain';
+export const dynamic = "force-dynamic";
+export const runtime = 'nodejs';
+import { checkDomainMxRecords } from '../../../../service/service.emailDomain';
 
 export async function GET(req) {
     const { searchParams } = new URL(req.url);
