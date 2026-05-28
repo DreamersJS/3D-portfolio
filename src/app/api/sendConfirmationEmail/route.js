@@ -1,13 +1,13 @@
+export const dynamic = "force-dynamic";// redis crashes in build stage
+export const runtime = 'nodejs';
 import { NextResponse } from 'next/server';
-import redisClient, { connectRedis } from '../../../../service/redisClient';
-import { generateToken, hashToken } from '../../../../service/tokenService';
+import { connectRedis } from '../../../../service/redisClient';
+import { generateToken, hashToken, storeToken } from '../../../../service/tokenService';
 import { rateLimiter } from '../../../../service/rateLimiter';
 import sendEmail5 from '../../../../service/nodemailer';
 
 export async function POST(req) {
-    const { searchParams } = new URL(req.url);
-    const email = searchParams.get('email');
-    // const { email } = await req.json();
+    const { email } = await req.json();
     const ip = req.headers.get('x-forwarded-for') || req.socket.remoteAddress || req.ip;
 
     if (!rateLimiter(ip)) {
@@ -24,22 +24,20 @@ export async function POST(req) {
 
     // Store token in Redis
     try {
-        await redisClient.setEx(`confirm_tokens:${hashedToken}`, 3600, JSON.stringify({ email, expiresAt }));
-        const storedToken = await redisClient.get(`confirm_tokens:${hashedToken}`);
-        console.log('Token stored in Redis:', storedToken); // Log to verify storage
-    } catch (redisError) {
-        console.error('Error saving token in Redis:', redisError);
+        await storeToken(hashedToken, email, expiresAt )
+    } catch (error) {
+        console.error('Error saving token in Redis:', error);
         return NextResponse.json({ message: 'Error saving confirmation token to Redis.' }, { status: 500 });
     }
 
     // Generate the confirmation link with the plain token
-    const confirmationLink = `${process.env.NEXT_PUBLIC_APP_URL}/api/confirmEmail?token=${token}&email=${email}`;
+    const confirmationLink = `${process.env.APP_URL}/api/confirmEmail?token=${token}&email=${email}`;
     console.log(`Confirmation link: ${confirmationLink}`);
     try {
         // Send the confirmation email
         const templateParams2 = {
             to: email,
-            subject,
+            subject: "Email confirmation",
             text: `Please confirm your email by clicking the link: ${confirmationLink}`,
         };
 

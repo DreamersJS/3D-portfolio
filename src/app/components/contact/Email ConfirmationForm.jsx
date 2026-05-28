@@ -11,7 +11,7 @@ export default function EmailConfirmationForm() {
     // Check if email domain can receive emails
     const handleEmailDomainCheck = async (email) => {
         try {
-            const response = await fetch(`/api/checkEmailDomain?email=${email}`);
+            const response = await fetch(`/api/checkEmailDomain?email=${email}`, { cache: 'no-store' });
             if (!response.ok) throw new Error('Network response was not ok');
             return true;
         } catch (error) {
@@ -38,6 +38,7 @@ export default function EmailConfirmationForm() {
                     'Content-Type': 'application/json',
                 },
                 body: JSON.stringify({ email }),
+                cache: "no-store",
             });
             if (!response.ok) throw new Error('Failed to send confirmation email');
             toast.success('Confirmation email sent!', {

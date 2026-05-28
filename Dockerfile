@@ -1,5 +1,5 @@
 # Use an official Node.js image from Docker Hub
-FROM node:18
+FROM node:18-bullseye-slim
 
 # ENV TURBOPACK=1
 # ENV NEXT_TELEMETRY_DISABLED=1

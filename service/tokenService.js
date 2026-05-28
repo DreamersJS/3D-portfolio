@@ -38,3 +38,15 @@ export const verifyToken = async (email, token) => {
 
     console.log('Email verified successfully!');
 };
+
+// Store token in Redis
+export const storeToken = async (hashedToken, email, expiresAt ) => {
+    try {
+        await redisClient.setEx(`confirm_tokens:${hashedToken}`, 3600, JSON.stringify({ email, expiresAt }));
+        const storedToken = await redisClient.get(`confirm_tokens:${hashedToken}`);
+        console.log('Token stored in Redis:', storedToken); // Log to verify storage
+    } catch (redisError) {
+        console.error('Error saving token in Redis:', redisError);
+    }
+
+}
