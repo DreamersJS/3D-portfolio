@@ -2,7 +2,7 @@
 import { BtnList } from '@/app/data';
 import React from 'react';
 import NavButton from './NavButton';
-import useScreenSize from '../hooks/useScreenSize';
+import useScreenSize from '../../hooks/useScreenSize';
 import ResponsiveComponent from '../ResponsiveComponent';
 import { motion } from 'framer-motion';
 

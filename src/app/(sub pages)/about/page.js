@@ -1,11 +1,11 @@
 'use client';
 import Image from "next/image";
-import bg from "../../../../public/background/about-background.png";
-import RenderModel from "@/app/components/RenderModel";
-import AboutDetails from "@/app/components/about";
+import bg from "../../../../public/background/about-background.webp";
+import RenderModel from "@/components/RenderModel";
+import AboutDetails from "@/components/about";
 import dynamic from "next/dynamic";
 
-const HatModel = dynamic(() => import('@/app/components/models/HatModel'), { ssr: false });
+const HatModel = dynamic(() => import('@/components/models/HatModel'), { ssr: false });
 
 export default function Home() {
 

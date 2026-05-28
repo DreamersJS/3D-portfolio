@@ -1,6 +1,6 @@
 'use client';
 
-import HomeBtn from "@/app/components/HomeBtn";
+import HomeBtn from "@/components/HomeBtn";
 
 export default function SubPagesLayout({ children }) {
   return (
