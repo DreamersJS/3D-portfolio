@@ -1,12 +1,41 @@
-# Don't copy node modules (they're rebuilt in container)
+# Node dependencies
 node_modules
-npm-debug.log
-yarn-error.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+*.log
 
-# Next.js build output
+# Build artifacts
 .next
+.swc
+out
+coverage
+dist
 
-# OS/system stuff
+# Testing
+__tests__/
+__mocks__/
+jest.config.js
+jest.setup.js
+*.spec.js
+*.test.js
+
+# Local environment files
+.env
+
+# IDE / Git / CI
+.vscode
+.git
+.github
+.gitignore
 .DS_Store
 *.swp
-.env
+
+# Docs / Misc
+*.md
+
+# Docker
+Dockerfile*
+docker-compose*
+
+scripts
