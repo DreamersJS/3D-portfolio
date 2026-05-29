@@ -11,7 +11,7 @@ export const projectsData = [
       "Tested cross-browser and multi-device WebRTC compatibility",
       "Collaborated in a 3-person team using GitHub workflows"
     ],
-    image: '/images/zamo-chat.png',
+    image: '/images/zamo-chat.webp',
     techStack: ["React", "TailwindCSS", "Firebase", "WebRTC"],
     type: "Front-end",
     demoLink: "https://zamo-chat-app.vercel.app",
@@ -30,7 +30,7 @@ export const projectsData = [
       "Used Suspense and Lazy",
       "Implemented DeepL API translation"
     ],
-    image: '/images/socket-chat.png',
+    image: '/images/socket-chat.webp',
     techStack: ["Express", "Socket.io", "MySQL", "JWT"],
     type: "Full-stack",
     demoLink: "",
@@ -47,7 +47,7 @@ export const projectsData = [
       "Containerized backend services with Docker and managed versions through GHCR",
       "Built room-based socket communication for shared whiteboard sessions"
     ],
-    image: '/images/whiteboard.png',
+    image: '/images/whiteboard.webp',
     techStack: ["Next.js", "Socket.io", "TailwindCSS", "Firebase", "Docker", "Jest"],
     type: "Full-stack",
     demoLink: "https://whiteboard-app-green-psi.vercel.app",
@@ -61,7 +61,7 @@ export const projectsData = [
       `Implemented responsive navigation with React Router for multi-path gameplay`,
       "Implemented Inventory & Trade system"
     ],
-    image: '/images/talasam.png',
+    image: '/images/talasam.webp',
     techStack: ["React", "React Router", "CSS", "Git"],
     type: "Front-end",
     demoLink: "https://talasam-deploy.vercel.app",
@@ -79,7 +79,7 @@ export const projectsData = [
       "Added integration and unit testing with Jest, Vitest, and SuperTest",
       "Configured isolated Docker-based testing database environments"
     ],
-    image: '/images/wellness.png',
+    image: '/images/wellness.webp',
     techStack: [
       "Recoil", "Express", "PostgreSQL",
       "Prisma ORM", "Nodemailer", "Redis", "JWT", "Vitest", "Jest", "SuperTest"

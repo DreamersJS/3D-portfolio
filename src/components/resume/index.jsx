@@ -1,0 +1,11 @@
+'use client'
+import Resume from "./Resume";
+
+const ResumeDetails = () => {
+    return (
+        <div>
+            <Resume/>
+        </div>
+    );
+};
+export default ResumeDetails;
