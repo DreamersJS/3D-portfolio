@@ -57,12 +57,12 @@ const AboutDetails = () => {
 
 
                 {/* github stats */}
-                <ItemsLayout className={'col-span-full sm:col-span-4 lg:col-span-8 p-0'}>
+                <ItemsLayout className={'col-span-full sm:col-span-4 md:col-span-8 p-0'}>
                     <img className='w-full h-auto' src="https://github-readme-stats-sigma-five.vercel.app/api?username=DreamersJS&theme=transparent&hide_border=true" alt="github lang stats" onError={(e) => {
                         e.currentTarget.style.display = 'none';
                     }} loading='lazy' />
                 </ItemsLayout>
-                <ItemsLayout className={'col-span-full sm:col-span-2 lg:col-span-4 p-0'}>
+                <ItemsLayout className={'col-span-full sm:col-span-2 md:col-span-4 p-0'}>
                     <img className='w-full h-auto' src="https://github-readme-stats-sigma-five.vercel.app/api/top-langs?username=DreamersJS&theme=transparent&hide_border=true" alt="github stats" onError={(e) => {
                         e.currentTarget.style.display = 'none';
                     }} loading='lazy' />
