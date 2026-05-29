@@ -12,11 +12,11 @@ export default function Home() {
   let cubeScale = 2.7;
   return (
     <main className="flex min-h-screen flex-col items-center justify-between relative">
-      <Image priority sizes="100vw" src={bg} alt="background-image" className="w-full h-full object-cover object-center opacity-10 -z-10" fill placeholder="blur" />
+      <Image priority sizes="100vw" src={bg} alt="background-image" className="w-full h-full object-cover object-center opacity-10 -z-10" fill unoptimized />
 
       <Nav />
 
-      <div className="absolute inset-0">
+      <div className="w-full h-screen">
         <ResponsiveComponent>
           {
             ({ width, height }) => {

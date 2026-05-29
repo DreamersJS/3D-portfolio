@@ -6,9 +6,11 @@ import useScreenSize from '../../hooks/useScreenSize';
 import ResponsiveComponent from '../ResponsiveComponent';
 
 const Nav = () => {
-
     const angleIncrement = 360 / BtnList.length;
-    const { width } = useScreenSize();
+    const { width, height } = useScreenSize();
+    if (width === null || height === null) {
+        return <div>Loading...</div>;
+    }
 
     const isLargeScreen = width > 1024;
     const isMediumScreen = width > 768 && width <= 1024;
@@ -22,10 +24,7 @@ const Nav = () => {
                         if (width && width >= 480 && height > 480) {
                             return (
                                 <div
-                                    initial='hidden'
-                                    animate='show'
-
-                                    className='flex items-center justify-center relative hover:pause group animate-spin-slow'>
+                                    className=' z-50 flex items-center justify-center relative animate-spin-slow hover:[animation-play-state:paused] group'>
                                     {
                                         BtnList.map((btn, index) => {
                                             const angleRadiant = (angleIncrement * index * Math.PI) / 180;
@@ -42,8 +41,6 @@ const Nav = () => {
                             return (
                                 <>
                                     <div
-                                        initial='hidden'
-                                        animate='show'
                                         className='w-full flex flex-row flex-wrap justify-evenly items-start mx-2'>
                                         {
                                             BtnList.map((btn) => {
@@ -62,8 +59,6 @@ const Nav = () => {
                                 <>
                                     {/* Left side buttons of the Mobile Nav */}
                                     <div
-                                        initial='hidden'
-                                        animate='show'
                                         className='w-full px-2.5 xs:p-0 xs:w-max flex flex-col space-y-32 items-start xs:items-center justify-center relative group'>
                                         {
                                             BtnList.slice(0, BtnList.length / 2).map((btn) => {
@@ -73,8 +68,7 @@ const Nav = () => {
                                     </div>
                                     {/* Right side buttons of the Mobile Nav */}
                                     <div
-                                        initial='hidden'
-                                        animate='show' className='w-full px-2.5 xs:p-0 xs:w-max flex flex-col space-y-32 items-end xs:items-center justify-center relative group'>
+                                        className='w-full px-2.5 xs:p-0 xs:w-max flex flex-col space-y-32 items-end xs:items-center justify-center relative group'>
                                         {
                                             BtnList.slice(BtnList.length / 2, BtnList.length).map((btn) => {
                                                 return <div key={btn.label} className='mr-12 px-1'><NavButton key={btn.label} x={0} y={0} {...btn} labelDirection="left" /></div>

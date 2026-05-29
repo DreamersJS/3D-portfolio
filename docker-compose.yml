@@ -7,9 +7,15 @@ services:
     cpus: "0.5"
     working_dir: /app
     volumes:
-      - .:/app   # live reload
-      - /app/node_modules  # Ignore the node_modules from the host, and use a clean internal one just for this container - Avoids dependency crashes
-      - /app/.next         # avoid syncing build artifacts. Speeds up reloads, avoids bugs
+      - ./src:/app/src
+      - ./public:/app/public
+      - ./service:/app/service
+      - ./next.config.mjs:/app/next.config.mjs
+      - ./jsconfig.json:/app/jsconfig.json
+      - ./postcss.config.js:/app/postcss.config.js
+      - ./tailwind.config.js:/app/tailwind.config.js
+
+      - /app/node_modules
     environment:
       NODE_ENV: development  
     command: npm run dev  # Command to start the Next.js app
