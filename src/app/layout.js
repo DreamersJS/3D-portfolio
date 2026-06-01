@@ -1,6 +1,9 @@
 import "./globals.css";
-import FirefliesBackground from "@/components/FirefliesBackground";
-import Sound from "../components/Sound";
+import dynamic from "next/dynamic";
+
+const FirefliesBackground = dynamic(() => import("@/components/FirefliesBackground"), {
+  ssr: false,
+});
 
 export const metadata = {
   title: "Portfolio with 3D models",
@@ -15,7 +18,6 @@ export default function RootLayout({ children }) {
       >
         {children}
         <FirefliesBackground/>
-        <Sound/>
         <div id="my-modal"/>
       </body>
     </html>

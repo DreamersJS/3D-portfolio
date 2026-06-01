@@ -6,7 +6,7 @@ docker-compose up --build
 This project is mostly based on the tutorial from this : [YouTube video](https://youtu.be/aZZrEE_UsIk)<br/>
 It’s my first time encountering Three.js and implementing a responsive component, and I really liked the experience! I learned more about mobile responsiveness and plan to use it in my next project. 
 
-A demo without Resume downloadable as .pdf & Email Confirmation but with responsive mobile landscape.
+A demo with Resume downloadable as .pdf & with responsive mobile landscape.
 DEMO: [DEMO:Portfolio](https://portfolio-magic-gold.vercel.app/)
 
 **My adjustments**: 
@@ -14,6 +14,7 @@ DEMO: [DEMO:Portfolio](https://portfolio-magic-gold.vercel.app/)
 - *Resume* available for download as a PDF. 
 - A tweak to `useScreenSize` hook to include the height of the screen. Intended for mobile landscape. 
 - Improved Email Format Validation
+- 3D cube
 <!-- - Email Confirmation -->
 
 
