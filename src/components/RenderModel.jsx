@@ -7,6 +7,7 @@ const RenderModel = ({ children }) => {
     return (
         <Canvas
             dpr={[1, 1.5]}
+            camera={{ position: [2, 2.5, 8.5], fov: 35 }}
             gl={{
                 antialias: false,
                 powerPreference: 'high-performance',

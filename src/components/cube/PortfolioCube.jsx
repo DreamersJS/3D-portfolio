@@ -2,7 +2,7 @@
 
 import { useRef } from 'react';
 import { useFrame } from '@react-three/fiber';
-import { Edges, Html } from '@react-three/drei';
+import { Html } from '@react-three/drei';
 import { faces } from './data';
 import useImageTexture from '@/hooks/useImageTexture';
 import useCubeMaterials from '../../hooks/useCubeMaterials';
@@ -43,11 +43,11 @@ export default function PortfolioCube({ cubeScale }) {
       >
         <boxGeometry args={[1, 1, 1]} />
 
-        <Edges
+        {/* <Edges
           scale={1.001}
           threshold={15}
           color="#fefe5b"
-        />
+        /> */}
       </mesh>
 
       <Html position={[0, -2.2, 0]} center>
